@@ -256,6 +256,20 @@ expect( hyper ).notToHaveSentNothing();
 
 ## Resetting the Builder
 
+To reset the sent request counts and sequences but keep the fake configuration, use the `resetFakes` method:
+
+```javascript
+hyper.fake();
+
+hyper.get( "https://google.com" );
+
+expect( hyper ).toHaveSentCount( 1 );
+
+hyper.resetFakes();
+
+expect( hyper ).toHaveSentNothing();
+```
+
 To reset the `HyperBuilder` instance to normal operation call the `clearFakes` method:
 
 ```cfscript
@@ -267,5 +281,5 @@ hyper.clearFakes();
 ```
 
 {% hint style="info" %}
-This is a useful method to call in an [`afterEach`](https://testbox.ortusbooks.com/in-depth/life-cycle-methods/bdd#aftereach-body-data) block in TestBox to make sure you are only faking requests when you want to.
+These are useful methods to call in an [`afterEach`](https://testbox.ortusbooks.com/in-depth/life-cycle-methods/bdd#aftereach-body-data) block in TestBox to make sure you are only faking requests when you want to.
 {% endhint %}

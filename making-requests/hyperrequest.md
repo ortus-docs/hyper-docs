@@ -26,7 +26,8 @@ The following are default properties for a `HyperRequest`:
     "timeout": 10, // in seconds
     "maximumRedirects": "*", // follow redirects indefinitely
     "bodyFormat": "json",
-    "throwOnError": false
+    "throwOnError": false,
+    "headers": { "User-Agent": "HyperCFML/#versionNumber#" }
 }
 ```
 
@@ -669,6 +670,16 @@ Check if the request has a cookie with the given name.
 
 **Return**: `boolean`
 
+### `setUserAgent`
+
+A convenience method to set the [`User-Agent` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+
+| Name      | Type   | Required | Default | Description                          |
+| --------- | ------ | -------- | ------- | ------------------------------------ |
+| userAgent | string | true     |         | The User-Agent value for the request |
+
+**Return**: `HyperRequest`
+
 ### `setContentType`
 
 A convenience method to set the [`Content-Type` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type).
@@ -887,6 +898,62 @@ Helper to conditionally execute a callback for the `HyperRequest`. This method l
 
 **Return**: `HyperRequest`
 
+### `retry`
+
+Configures the request to retry failed requests.
+
+| Name      | Type                         | Required | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| --------- | ---------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| attempts  | `numeric` / `array<numeric>` | `true`   |         | Either the max number of retry attempts to make or an array containing retry delays between each attempt.  If a numeric value is passed in, the `delay` argument is required.                                                                                                                                                                                                                                                              |
+| delay     | `numeric`                    | `false`  |         | The delay to use for each of the `attempts`. This argument is required if `attempts` is a numeric value.  If `attempts` is an array, this value is ignored.                                                                                                                                                                                                                                                                                |
+| predicate | `function`                   | `false`  |         | <p>The predicate function to call to determine if a retry should be attempted.<br><br>This function is only called if there are configured retries available.<br><br>To retry a request, this function should return <code>true</code>.<br><br>It is passed the <code>response</code> and <code>request</code> as parameters.<br><br>Additionally, the <code>request</code> can be modified in this method for the next retry attempt.</p> |
+
+**Return**: `HyperRequest`
+
+### `getRetries`
+
+Returns the current retry configuration which is an array of delay times.  A request that needs to be retried will be retried up to the amount of items in this array.  This array can be set using the `retry` method.
+
+{% hint style="warning" %}
+In most cases, you do not need to interact with this method directly.  Use the `retry` method instead.
+{% endhint %}
+
+| Name         | Type | Required | Default | Description |
+| ------------ | ---- | -------- | ------- | ----------- |
+| No arguments |      |          |         |             |
+
+**Return**: `array<numeric>`
+
+### `getCurrentRequestCount`
+
+Returns the current request count.  Defaults to `1`. The only time this will increase is if `retries` have been configured for the request.
+
+| Name         | Type | Required | Default | Description |
+| ------------ | ---- | -------- | ------- | ----------- |
+| No arguments |      |          |         |             |
+
+**Return**: `numeric`
+
+### `getRetryPredicate`
+
+Returns the current callback function that is called to decide if a request should be retried.  This is only called if there are available retries left.
+
+This callback is passed the response and the request as parameters.
+
+A request will be retried if this function returns `true`.
+
+In this function, the passed in request can be modified for the next retry.
+
+{% hint style="warning" %}
+In most cases, you do not need to interact with this method directly.  Use the `retry` method instead.
+{% endhint %}
+
+| Name         | Type | Required | Default | Description |
+| ------------ | ---- | -------- | ------- | ----------- |
+| No arguments |      |          |         |             |
+
+**Return**: `numeric`
+
 ### `setProperties`
 
 Quickly set many request properties using a struct. The key should be the name of one of the properties on the request, e.g. `url`, `headers`, `method`, `body`.
@@ -939,30 +1006,32 @@ Returns a struct representing this `HyperRequest`.
 
 ```json
 {
-    "requestID"          : getRequestID(),
-    "baseUrl"            : getBaseUrl(),
-    "url"                : getUrl(),
-    "fullUrl"            : getFullUrl(),
-    "method"             : getMethod(),
-    "queryParams"        : getQueryParams(),
-    "headers"            : getHeaders(),
-    "cookies"            : getCookies(),
-    "files"              : getFiles(),
-    "bodyFormat"         : getBodyFormat(),
-    "body"               : getBody(),
-    "referrer"           : isNull( variables.referrer ) ? "" : variables.referrer,
-    "throwOnError"       : getThrowOnError(),
-    "timeout"            : getTimeout(),
-    "maximumRedirects"   : getMaximumRedirects(),
-    "authType"           : getAuthType(),
-    "username"           : getUsername(),
-    "password"           : getPassword(),
-    "clientCert"         : isNull( variables.clientCert ) ? "" : variables.clientCert,
-    "clientCertPassword" : isNull( variables.clientCertPassword ) ? "" : variables.clientCertPassword,
-    "domain"             : getDomain(),
-    "workstation"        : getWorkstation(),
-    "resolveUrls"        : getResolveUrls(),
-    "encodeUrl"          : getEncodeUrl()
+    "requestID"           : getRequestID(),
+    "baseUrl"             : getBaseUrl(),
+    "url"                 : getUrl(),
+    "fullUrl"             : getFullUrl(),
+    "method"              : getMethod(),
+    "queryParams"         : getQueryParams(),
+    "headers"             : getHeaders(),
+    "cookies"             : getCookies(),
+    "files"               : getFiles(),
+    "bodyFormat"          : getBodyFormat(),
+    "body"                : getBody(),
+    "referrer"            : isNull( variables.referrer ) ? "" : variables.referrer,
+    "throwOnError"        : getThrowOnError(),
+    "timeout"             : getTimeout(),
+    "maximumRedirects"    : getMaximumRedirects(),
+    "authType"            : getAuthType(),
+    "username"            : getUsername(),
+    "password"            : getPassword(),
+    "clientCert"          : isNull( variables.clientCert ) ? "" : variables.clientCert,
+    "clientCertPassword"  : isNull( variables.clientCertPassword ) ? "" : variables.clientCertPassword,
+    "domain"              : getDomain(),
+    "workstation"         : getWorkstation(),
+    "resolveUrls"         : getResolveUrls(),
+    "encodeUrl"           : getEncodeUrl(),
+    "retries"             : getRetries(),
+    "currentRequestCount" : getCurrentRequestCount()
 };
 ```
 

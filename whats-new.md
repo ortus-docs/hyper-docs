@@ -1,5 +1,19 @@
 # What's New?
 
+## 7.3.0
+
+### Retrying Failed Requests
+
+You can now configure a `HyperRequest` to automatically retry failed requests.  [See the `HyperRequest` docs for details.](making-requests/hyperrequest.md#retry)
+
+### Default User-Agent
+
+Hyper now sends a default User-Agent of `HyperCFML/#versionNumber#`.
+
+### Fake Requests
+
+Hyper can now reset the fake request counts and sequences without losing the fake configuration using the [`resetFakes`](testing/faking-requests.md#resetting-the-builder) method.
+
 ## 7.2.0
 
 ### Cookies
