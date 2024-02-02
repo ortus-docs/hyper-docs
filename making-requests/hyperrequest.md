@@ -48,7 +48,7 @@ Execute a `GET` request and return a [`HyperResponse`](hyperresponse.md).
 
 Execute a `GET` request asynchronously. Returns a [ColdBox Future](https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming) that returns a [`HyperResponse`](hyperresponse.md).
 
-<table><thead><tr><th width="40">Name</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>url</td><td>string</td><td>false</td><td>null</td><td>An optional URL to set for the request.</td></tr><tr><td>queryParams</td><td>struct</td><td>false</td><td>null</td><td>An optional struct of query parameters to set for the request.</td></tr></tbody></table>
+<table><thead><tr><th width="162">Name</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td>url</td><td>string</td><td>false</td><td>null</td><td>An optional URL to set for the request.</td></tr><tr><td>queryParams</td><td>struct</td><td>false</td><td>null</td><td>An optional struct of query parameters to set for the request.</td></tr></tbody></table>
 
 **Return**: [`Future`](https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming)`<`[`HyperResponse`](hyperresponse.md)`>`
 
@@ -530,6 +530,16 @@ A convenience method to set the body format and Content-Type to form fields.
 ### `asXML`
 
 A convenience method to set the body format and Content-Type to `xml`.
+
+| Name         | Type | Required | Default | Description |
+| ------------ | ---- | -------- | ------- | ----------- |
+| No arguments |      |          |         |             |
+
+**Return**: `HyperRequest`
+
+### `asBinary`
+
+A convenience method to set the body format to `binary` and Content-Type to `application/octet-stream`.
 
 | Name         | Type | Required | Default | Description |
 | ------------ | ---- | -------- | ------- | ----------- |

@@ -1,5 +1,11 @@
 # What's New?
 
+## 7.4.0
+
+### asBinary
+
+Added a [convenience method](making-requests/hyperrequest.md#asbinary) to set the `bodyFormat` to `binary` and the `Content-Type` to `application/octet-stream`.
+
 ## 7.3.0
 
 ### Retrying Failed Requests
