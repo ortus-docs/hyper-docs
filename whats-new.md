@@ -10,7 +10,7 @@ You can now configure a `HyperRequest` to automatically retry failed requests.  
 
 Hyper now sends a default User-Agent of `HyperCFML/#versionNumber#`.
 
-### Fake Requests
+### Reset Fake Request Counts and Sequences
 
 Hyper can now reset the fake request counts and sequences without losing the fake configuration using the [`resetFakes`](testing/faking-requests.md#resetting-the-builder) method.
 
