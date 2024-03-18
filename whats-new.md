@@ -1,5 +1,11 @@
 # What's New?
 
+## 7.5.0
+
+### Request available in \`onHyperResponse\` interception point.
+
+Although this was already available by calling `response.getRequest()`, the request is now available as the second parameter of the [`onHyperResponse` interceptor](customizing-hyper/interceptors.md#onhyperresponse).
+
 ## 7.4.0
 
 ### asBinary

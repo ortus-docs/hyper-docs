@@ -20,6 +20,7 @@
 * [Hyper Clients](customizing-hyper/hyper-clients.md)
 * [Custom HTTP Clients](customizing-hyper/custom-http-clients/README.md)
   * [CfhttpHttpClient](customizing-hyper/custom-http-clients/cfhttphttpclient.md)
+* [Interceptors](customizing-hyper/interceptors.md)
 
 ## Testing
 
