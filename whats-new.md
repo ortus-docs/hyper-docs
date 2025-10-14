@@ -1,5 +1,18 @@
 # What's New?
 
+## 8.0.2
+
+Removed unused API docs build in the CI process.
+
+## 8.0.1
+
+* Ensure backwards compatibility with ColdBox versions before 6.
+* Various tests and CI updates.
+
+## 8.0.0
+
+v8.0.0 was released as a mistake in the build process. By the time it was realized, other people had already started using it, so removing it would cause even more issues.  So, it's staying around, even without any changes at all.
+
 ## 7.5.3
 
 Certify for BoxLang

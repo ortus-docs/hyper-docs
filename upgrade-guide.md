@@ -1,5 +1,11 @@
 # Upgrade Guide
 
+## Upgrading from v7 to v8
+
+This will be your easiest upgrade ever — there's nothing to do!
+
+v8.0.0 was released as a mistake in the build process. By the time it was realized, other people had already started using it, so removing it would cause even more issues.  So, it's staying around, even without any changes at all.
+
 ## Upgrading from v6 to v7
 
 ### CFHttp HTTP Client
