@@ -1,5 +1,17 @@
 # What's New?
 
+## 7.5.3
+
+Certify for BoxLang
+
+## 7.5.2
+
+Add ability to exclude keys from [`HyperRequest`](making-requests/hyperrequest.md#getmemento) and [`HyperResponse`](making-requests/hyperresponse.md#getmemento) mementos.
+
+## 7.5.1
+
+Updated misspelled and missing docblocks.
+
 ## 7.5.0
 
 ### Request available in \`onHyperResponse\` interception point.

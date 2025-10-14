@@ -1008,9 +1008,9 @@ Sets the [ColdBox AsyncManager](https://coldbox.ortusbooks.com/digging-deeper/pr
 
 Returns a struct representing this `HyperRequest`.
 
-| Name         | Type | Required | Default | Description |
-| ------------ | ---- | -------- | ------- | ----------- |
-| No arguments |      |          |         |             |
+| Name     | Type    | Required | Default | Description                                            |
+| -------- | ------- | -------- | ------- | ------------------------------------------------------ |
+| excludes | `array` | `false`  | `[]`    | An array of keys to exclude from the returned memento. |
 
 **Return**:
 

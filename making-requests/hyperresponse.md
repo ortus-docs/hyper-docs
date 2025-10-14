@@ -261,9 +261,9 @@ Parses and saves the cookies to the cookie scope.
 
 Gets a serializable representation of the response.
 
-| Name         | Type | Required | Default | Description |
-| ------------ | ---- | -------- | ------- | ----------- |
-| No arguments |      |          |         |             |
+| Name     | Type    | Required | Default | Description                                            |
+| -------- | ------- | -------- | ------- | ------------------------------------------------------ |
+| excludes | `array` | `false`  | `[]`    | An array of keys to exclude from the returned memento. |
 
 **Return**:
 
