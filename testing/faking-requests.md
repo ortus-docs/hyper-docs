@@ -189,9 +189,9 @@ Returns whether a request has been made that matches the `predicate`. Each reque
 
 ### Custom TestBox Assertions
 
-You can register [custom TestBox assertions](https://testbox.ortusbooks.com/in-depth/expectations/custom-matchers) provided by Hyper for more readable tests and test failure messages.
+You can register [custom TestBox assertions](https://testbox.ortusbooks.com/digging-deeper/expectations/custom-matchers) provided by Hyper for more readable tests and test failure messages.
 
-You must [register](https://testbox.ortusbooks.com/in-depth/expectations/custom-matchers#cfc-matchers) these assertions before using them.
+You must [register](https://testbox.ortusbooks.com/digging-deeper/expectations/custom-matchers#class-matchers) these assertions before using them.
 
 ```cfscript
 component extends="testbox.system.BaseSpec" {
