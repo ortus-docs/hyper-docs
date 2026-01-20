@@ -219,11 +219,11 @@ hyper.fake();
 hyper.get( "https://google.com" );
 
 expect( hyper ).toHaveSentRequest( function( req ) {
-    return req.getFullUrl( "https://google.com" );
+    return req.getFullUrl() == "https://google.com";
 } );
 
 expect( hyper ).notToHaveSentRequest( function( req ) {
-    return req.getFullUrl( "https://github.com" );
+    return req.getFullUrl() == "https://github.com";
 } );
 ```
 
